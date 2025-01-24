@@ -8,7 +8,8 @@ app.use(cors())
 require("dotenv").config()
 async function db(){
 try{
-  const connecttodb = await mongoose.connect("mongodb://localhost:27017/URL")
+  const DATABASE_URL = process.env.DATABASE_URL
+  const connecttodb = await mongoose.connect(DATABASE_URL)
   console.log("Connected to db....");
 }catch(e){
   console.log("error in connecting to db..",e);
