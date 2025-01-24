@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Link, Copy, ChevronRight, Github } from 'lucide-react';
+import { Copy, } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import HomeFeatures from '../components/HomeFeatures';
