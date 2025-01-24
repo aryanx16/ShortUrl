@@ -1,8 +1,10 @@
 const express = require("express")
 const { default: mongoose } = require("mongoose")
 const Url = require("./model/Url")
+const cors = require("cors")
 const app = express()
 app.use(express.json())
+app.use(cors())
 require("dotenv").config()
 async function db(){
 try{
@@ -17,8 +19,12 @@ db()
 app.listen(3000,()=>{
   console.log("Listening...")
 })
+// app.get("/",(req,res)=>{
+//   res.send("Server is working fine..")
+//   console.log("ha bol ")
+// })
 
-app.get("/geturl/",async(req,res)=>{
+app.get("/",async(req,res)=>{
   console.log(req.query.token)
   const token = req.query.token
   const findurl = await Url.findOne({
@@ -35,7 +41,6 @@ app.get("/geturl/",async(req,res)=>{
 
 
 app.post("/shorturl",async(req,res)=>{
-  console.log(req.body);
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   let token = '';
   for (let i = 0; i < 5; i++) {
@@ -47,5 +52,5 @@ app.post("/shorturl",async(req,res)=>{
     token:token
   })
   await newlink.save();
-  res.json({shorturl:`localhost:3000/geturl/?token=${token}`})
+  res.json({shorturl:`${process.env.BACKEND_URL}/?token=${token}`})
 })
