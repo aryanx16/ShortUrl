@@ -33,7 +33,7 @@ const HomeFeatures = () => {
         },
         {
           title: "Secure Links",
-          description: "All shortened URLs are encrypted and protected",
+          description: "All shortened URLs are protected",
           icon: <Link className="w-6 h-6" />,
         },
       ].map((feature, index) => (

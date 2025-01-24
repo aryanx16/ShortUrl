@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import {   Github } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -17,7 +18,9 @@ const Footer = () => {
                                 whileHover={{ scale: 1.1 }}
                                 className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
                             >
+                                <Link to={"https://github.com/aryanx16/ShortUrl"}>
                                 <Github className="w-5 h-5" />
+                                </Link>
                             </motion.a>
                         </div>
                     </div>

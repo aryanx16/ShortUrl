@@ -23,7 +23,7 @@ const HomePage = () => {
     e.preventDefault();
     try {
       console.log("dkjf")
-      const response = await axios.post(`https://shorturlb.vercel.app/shorturl`, { url: bigurl });
+      const response = await axios.post(`${BACKEND_URL}`, { url: bigurl });
       console.log(response);
       setShortUrl(response.data.shorturl);
       toast.success('Short URL created successfully!');
