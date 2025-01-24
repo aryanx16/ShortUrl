@@ -19,12 +19,14 @@ db()
 app.listen(3000,()=>{
   console.log("Listening...")
 })
-// app.get("/",(req,res)=>{
-//   res.send("Server is working fine..")
-//   console.log("ha bol ")
-// })
+app.get("/",(req,res)=>{
+  res.send("Server is working fine..")
+  console.log("ha bol ")
+})
 
-app.get("/",async(req,res)=>{
+
+
+app.get("/u",async(req,res)=>{
   console.log(req.query.token)
   const token = req.query.token
   const findurl = await Url.findOne({
@@ -52,5 +54,5 @@ app.post("/shorturl",async(req,res)=>{
     token:token
   })
   await newlink.save();
-  res.json({shorturl:`${process.env.BACKEND_URL}/?token=${token}`})
+  res.json({shorturl:`${process.env.BACKEND_URL}/u/?token=${token}`})
 })
